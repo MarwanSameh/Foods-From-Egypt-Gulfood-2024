@@ -1,0 +1,36 @@
+---
+f_exhibitor-photo: >-
+  https://drive.google.com/file/d/1qtVmLTzRLUaHAHQEEG2GhgEu7qfH_LAR/view?usp=drive_link
+f_website-link: www.lactomisr.com
+f_poc-phone: '+201093499797'
+title: Lacto-Misr Co. (S.A.E) for the Production of Baby Milk and Foods
+f_poc-email: info@lactomisr.com
+f_poc-name: Ms. Manal El Feky
+f_address: 10th of Ramadan city , industrial zone A6, no.131
+f_stand: G2-38
+f_hall: Hall 2
+f_brief: >-
+  � Baby Milk Powder for different ages :
+
+  Lacto 1 & Lacto 1 Adv. (0-6 months), Lacto2 & Lacto 2 Adv. (6-12 months)  and
+  Lacto3 (1 year- 3 years) for Lacto Misr and EGY1 (0-6 months) and EGY2 (6-12
+  months) for NSPO.
+
+  � Special formula (lactose-free): Lacto LF for Lacto Misr and EGY LF for NSPO.
+
+  � Special formula (Cow milk intolerance): Lacto CI1, Lacto CI2 for Lacto Misr
+  and EGY CI1, EGY CI2 for NSPO.
+
+  � Non-Dairy Creamer powder.
+
+  � Topping base powder.
+f_product-range: Infant formula, Food Supplements, Non Dairy Creamer and Topping Base Powder.
+slug: lacto-misr-co-s-a-e-for-the-production-of-baby-milk-and-foods
+updated-on: '2024-02-07T13:31:02.497Z'
+created-on: '2024-02-07T13:31:02.497Z'
+published-on: null
+layout: '[dairies].html'
+tags: dairies
+---
+
+
