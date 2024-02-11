@@ -631,113 +631,6 @@ collections:
         name: date
         widget: datetime
       - *ref_0
-  - name: baked_products
-    label: Baked Products
-    folder: cms/baked-products
-    create: true
-    identifier_field: name
-    extension: md
-    slug: '{{slug}}'
-    fields:
-      - hint: ''
-        name: title
-        label: Exhibitor Name
-        widget: string
-        required: true
-      - hint: ''
-        name: created-on
-        label: Created On
-        widget: datetime
-        required: false
-      - hint: ''
-        name: updated-on
-        label: Updated On
-        widget: datetime
-        required: false
-      - hint: ''
-        name: published-on
-        label: Published On
-        widget: datetime
-        required: false
-      - hint: ''
-        name: f_hall
-        label: Hall
-        widget: string
-        required: false
-      - hint: ''
-        name: f_stand
-        label: Stand
-        widget: string
-        required: false
-      - hint: ''
-        name: f_exhibitor-logo
-        label: Exhibitor Logo
-        widget: object
-        required: false
-        fields:
-          - hint: ''
-            name: url
-            label: Image
-            widget: image
-            required: false
-            allow_multiple: false
-          - hint: Image Alt
-            name: alt
-            label: alt
-            widget: string
-            required: false
-      - hint: ''
-        name: f_poc-name
-        label: POC Name
-        widget: string
-        required: false
-      - hint: ''
-        name: f_poc-phone
-        label: POC Phone
-        widget: string
-        required: false
-      - hint: ''
-        name: f_poc-email
-        label: POC Email
-        widget: string
-        required: false
-      - hint: ''
-        name: f_address
-        label: Address
-        widget: string
-        required: false
-      - hint: ''
-        name: f_product-range
-        label: Product Range
-        widget: string
-        required: false
-      - hint: ''
-        name: f_brief
-        label: Brief
-        widget: string
-        required: false
-      - hint: ''
-        name: f_website-link
-        label: Website Link
-        widget: string
-        required: false
-      - hint: ''
-        name: f_exhibitor-photo
-        label: Exhibitor Photo
-        widget: string
-        required: false
-      - label: Tags
-        widget: hidden
-        name: tags
-        default: baked-products
-      - label: Layout
-        widget: hidden
-        name: layout
-        default: '[baked-products].html'
-      - label: Publish Date
-        name: date
-        widget: datetime
-      - *ref_0
   - name: poultry
     label: Poultries
     folder: cms/poultry
@@ -1269,6 +1162,113 @@ collections:
         widget: hidden
         name: layout
         default: '[dairies].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: herbs_and_spices
+    label: Herbs and Spices
+    folder: cms/herbs-and-spices
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Exhibitor Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_hall
+        label: Hall
+        widget: string
+        required: false
+      - hint: ''
+        name: f_stand
+        label: Stand
+        widget: string
+        required: false
+      - hint: ''
+        name: f_exhibitor-logo
+        label: Exhibitor Logo
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_poc-name
+        label: POC Name
+        widget: string
+        required: false
+      - hint: ''
+        name: f_poc-phone
+        label: POC Phone
+        widget: string
+        required: false
+      - hint: ''
+        name: f_poc-email
+        label: POC Email
+        widget: string
+        required: false
+      - hint: ''
+        name: f_address
+        label: Address
+        widget: string
+        required: false
+      - hint: ''
+        name: f_product-range
+        label: Product Range
+        widget: string
+        required: false
+      - hint: ''
+        name: f_brief
+        label: Brief
+        widget: string
+        required: false
+      - hint: ''
+        name: f_website-link
+        label: Website Link
+        widget: string
+        required: false
+      - hint: ''
+        name: f_exhibitor-photo
+        label: Exhibitor Photo
+        widget: string
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: herbs-and-spices
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[herbs-and-spices].html'
       - label: Publish Date
         name: date
         widget: datetime
@@ -2548,6 +2548,10 @@ collections:
           - hint: 'Original text: Halva, Tahinis, Honey and Jams, key: 34596837'
             label: Text
             name: '34596837'
+            widget: string
+          - hint: 'Original text: Herbs and Spices, key: -1d2287f8'
+            label: Text
+            name: '-1d2287f8'
             widget: string
           - hint: 'Original text: Ingredients, key: -19fa8f5e'
             label: Text

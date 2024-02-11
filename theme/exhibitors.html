@@ -597,6 +597,87 @@ display: none;
   </section>
   <section id="confectionery" class="exhibitor__section">
     <div class="exhibitor__list-heading-div">
+      <h2 id="halva-tahini-honey-jam" class="section__heading-1-2 is--center">{{ texts.-1d2287f8 }}</h2>
+    </div>
+    <div class="w-layout-blockcontainer section__container-3 w-container">
+      <div class="splide__carousel-wrapper">
+        <div class="splide slider2">
+          <div class="splide_embed w-embed">
+            <style>
+.splide__arrows, .splide__pagination {
+display: none;
+}
+.my-slider-progress {
+  background: #2e2a27;
+}
+.my-slider-progress-bar {
+  background: #B3B641;
+  height: 4px;
+  transition: width 400ms ease;
+  width: 0;
+}
+</style>
+          </div>
+          {%- assign collection = collections.herbs-and-spices | sort: "-created-on" -%}<div class="splide__track w-dyn-list">
+            {%- unless collection.length == 0 -%}<div role="list" class="splide__list w-dyn-items">
+              {%- for item in collection -%}<div role="listitem" class="splide__slide w-dyn-item">
+                <div class="exhibitor__card-wrapper">
+                  <div class="exhibitor__card"><img loading="lazy" src="{{ item.data.f_exhibitor-logo.url }}" alt="{{ item.data.f_exhibitor-logo.alt }}" class="exhibitor__logo">
+                    <h3 class="section__heading-3-2 is--exhibitor-card">{{ item.data.title }}</h3>
+                    <div class="exhibitor__hall-stand-wrapper">
+                      <p class="exhibitor__hall-number-2">{{ item.data.f_hall }}</p>
+                      <p class="exhibitor__hall-stand-seperator-2">{{ texts.2d }}</p>
+                      <p class="exhibitor__stand-number-2">{{ item.data.f_stand }}</p>
+                    </div>
+                    <div class="exhibitor__card-seperator"></div>
+                    <p class="exhibitors__poc-name-2">{{ item.data.f_poc-name }}</p>
+                    <p class="exhibitors__poc-number-2">{{ item.data.f_poc-phone }}</p>
+                    <p class="exhibitors__poc-email-2">{{ item.data.f_poc-email }}</p>
+                    <div class="exhibitor__card-seperator"></div>
+                  </div>
+                  <div class="exhibitor__card-back">
+                    <a href="{{ links.23 }}" class="exhibitor__back-company-wrapper w-inline-block"><img src="{{ images.-3fceaa9d.url }}" loading="lazy" alt="{{ images.-3fceaa9d.alt | trim | escape }}" class="back-icon"></a>
+                    <div class="exhibitors__back-details-wrapper">
+                      <p class="exhibitors__back-title-2">{{ texts.752a03d5 }}</p>
+                      <p class="exhibitors__back-details-2">{{ item.data.f_address }}</p>
+                      <div class="exhibitor__card-seperator"></div>
+                    </div>
+                    <div class="exhibitors__back-details-wrapper">
+                      <p class="exhibitors__back-title-2">{{ texts.14e1aa8c }}</p>
+                      <p class="exhibitors__back-details-2">{{ item.data.f_product-range }}</p>
+                      <div class="exhibitor__card-seperator"></div>
+                    </div>
+                    <div class="exhibitors__back-details-wrapper">
+                      <p class="exhibitors__back-title-2">{{ texts.13c6e6d7 }}</p>
+                      <p class="exhibitors__back-details-2">{{ item.data.f_brief }}</p>
+                      <div class="exhibitor__card-seperator"></div>
+                    </div>
+                  </div>
+                  <a href="{{ links.23 }}" class="exhibitor__company-details-wrapper w-inline-block">
+                    <p class="exhibitor__company-details-2">{{ texts.-6e20b2a1 }}</p>
+                  </a>
+                  <a href="{{ item.data.f_website-link }}" class="exhibitor__website-button w-inline-block">
+                    <h3 class="section__heading-3-2 is--exhibitor-card is--button-link">{{ texts.27939377 }}</h3>
+                  </a>
+                  <a href="{{ item.data.f_exhibitor-photo }}" class="exhibitor__brochure-button w-inline-block">
+                    <h3 class="section__heading-3-2 is--exhibitor-card is--button-link">{{ texts.14c8af81 }}</h3>
+                  </a>
+                </div>
+              </div>{%- endfor -%}
+            </div>{%- endunless -%}
+            {%- if collection.length == 0 -%}<div class="w-dyn-empty">
+              <div>{{ texts.3d503d2b }}</div>
+            </div>{%- endif -%}
+          </div>
+          <div id="progress" class="my-slider-progress is__hidden">
+            <div class="my-slider-progress-bar"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="confectionery" class="exhibitor__section">
+    <div class="exhibitor__list-heading-div">
       <h2 id="ingredients" class="section__heading-1-2 is--center">{{ texts.-19fa8f5e }}</h2>
     </div>
     <div class="w-layout-blockcontainer section__container-3 w-container">
