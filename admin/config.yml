@@ -1,0 +1,4421 @@
+backend:
+  name: git-gateway
+  accept_roles:
+    - admin
+    - editor
+  branch: master
+media_folder: theme/assets/images
+public_folder: /assets/images
+collections:
+  - name: pages
+    label: Pages
+    identifier_field: title
+    extension: md
+    create: false
+    delete: false
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    folder: cms/pages
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '{{slug}}.html'
+      - &ref_0
+        label: Seo
+        name: seo
+        widget: object
+        collapsed: true
+        fields:
+          - label: Title
+            name: title
+            widget: string
+            required: false
+          - label: Description
+            name: description
+            widget: string
+            required: false
+          - label: No index
+            name: noindex
+            widget: boolean
+            default: false
+            required: false
+          - label: Open Graph Title
+            name: og:title
+            widget: string
+            required: false
+          - label: Open Graph Image
+            name: og:image
+            widget: image
+            required: false
+            media_library:
+              config:
+                multiple: false
+          - label: Twitter Title
+            name: twitter:title
+            widget: string
+            default: summary
+            required: false
+          - label: Twitter Card
+            name: twitter:card
+            widget: string
+            default: summary
+            required: false
+          - label: Twitter Site
+            name: twitter:site
+            widget: string
+            required: false
+          - label: Twitter Creator
+            name: twitter:creator
+            widget: string
+            required: false
+          - label: Twitter Image
+            name: twitter:image
+            widget: image
+            required: false
+            media_library:
+              config:
+                multiple: false
+          - label: Additional HTML tags
+            name: additional_tags
+            widget: text
+            required: false
+  - name: exhibitors_list
+    label: Exhibitors Lists
+    folder: cms/exhibitors-list
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_image
+        label: Image
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_section-link
+        label: Section Link
+        widget: string
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: exhibitors-list
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[exhibitors-list].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: category
+    label: Categories
+    folder: cms/category
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: category
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[category].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: product
+    label: Products
+    folder: cms/product
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: variation-properties
+        label: Variation Properties
+        widget: list
+        required: false
+        summary: '{{name}}'
+        fields:
+          - hint: ''
+            name: slug
+            label: Slug
+            widget: hidden
+            required: true
+          - hint: ''
+            name: name
+            label: Name
+            widget: string
+            required: true
+          - hint: ''
+            name: values
+            label: Values
+            widget: list
+            required: true
+            summary: '{{name}}'
+            fields:
+              - hint: ''
+                name: slug
+                label: Slug
+                widget: hidden
+                required: true
+              - hint: ''
+                name: name
+                label: Name
+                widget: string
+                required: true
+      - hint: ''
+        name: variations
+        label: Variations
+        widget: list
+        required: true
+        summary: '{{title}}'
+        min: 1
+        fields:
+          - hint: Slug of the variation
+            name: slug
+            label: Slug
+            widget: string
+            required: true
+          - hint: Default variation?
+            name: default
+            label: Default
+            widget: boolean
+            required: true
+          - hint: ''
+            name: variation-properties
+            label: SKU Values
+            widget: prop-values
+            required: false
+          - hint: ''
+            name: title
+            label: Name
+            widget: string
+            required: true
+          - hint: ''
+            name: f_main-image
+            label: Main Image
+            widget: object
+            required: false
+            fields:
+              - hint: ''
+                name: url
+                label: Image
+                widget: image
+                required: false
+                allow_multiple: false
+              - hint: Image Alt
+                name: alt
+                label: alt
+                widget: string
+                required: false
+          - hint: ''
+            name: f_more-images
+            label: More Images
+            widget: list
+            required: false
+            fields:
+              - hint: ''
+                name: url
+                label: Image
+                widget: image
+                required: false
+                allow_multiple: false
+              - hint: Image Alt
+                name: alt
+                label: alt
+                widget: string
+                required: false
+          - hint: ''
+            name: f_price
+            label: Price
+            widget: price
+            required: true
+          - hint: Compare at Price must be higher than price
+            name: f_compare-at-price
+            label: Compare at price
+            widget: price
+            required: false
+          - hint: ''
+            name: f_download-files
+            label: Downloads
+            widget: list
+            required: false
+            fields:
+              - hint: ''
+                name: url
+                label: Image
+                widget: image
+                required: false
+                allow_multiple: false
+              - hint: Image Alt
+                name: alt
+                label: alt
+                widget: string
+                required: false
+          - hint: ''
+            name: f_width
+            label: Width
+            widget: number
+            required: false
+          - hint: ''
+            name: f_length
+            label: Length
+            widget: number
+            required: false
+          - hint: ''
+            name: f_height
+            label: Height
+            widget: number
+            required: false
+          - hint: ''
+            name: f_weight
+            label: Weight
+            widget: number
+            required: false
+          - hint: ''
+            name: f_sku
+            label: SKU
+            widget: string
+            required: false
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: Add this product to one or more categories.
+        name: f_category
+        label: Categories
+        widget: relation
+        required: false
+        collection: category
+        value_field: cms/category/{{slug}}.md
+        search_fields:
+          - slug
+          - name
+        display_fields:
+          - title
+        multiple: true
+      - hint: ''
+        name: f_description
+        label: Description
+        widget: string
+        required: false
+      - hint: ''
+        name: f_shippable
+        label: Requires Shipping
+        widget: boolean
+        required: false
+        default: false
+      - hint: ''
+        name: f_ec-product-type
+        label: Product type
+        widget: select
+        required: false
+        options:
+          - label: Physical
+            value: Physical
+          - label: Digital
+            value: Digital
+          - label: Service
+            value: Service
+          - label: Membership
+            value: Membership
+          - label: Advanced
+            value: Advanced
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: product
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[product].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: dates
+    label: Dates
+    folder: cms/dates
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Exhibitor Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_hall
+        label: Hall
+        widget: string
+        required: false
+      - hint: ''
+        name: f_stand
+        label: Stand
+        widget: string
+        required: false
+      - hint: ''
+        name: f_exhibitor-logo
+        label: Exhibitor Logo
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_poc-name
+        label: POC Name
+        widget: string
+        required: false
+      - hint: ''
+        name: f_poc-phone
+        label: POC Phone
+        widget: string
+        required: false
+      - hint: ''
+        name: f_poc-email
+        label: POC Email
+        widget: string
+        required: false
+      - hint: ''
+        name: f_address
+        label: Address
+        widget: string
+        required: false
+      - hint: ''
+        name: f_product-range
+        label: Product Range
+        widget: text
+        required: false
+      - hint: ''
+        name: f_brief
+        label: Brief
+        widget: text
+        required: false
+      - hint: ''
+        name: f_website-link
+        label: Website Link
+        widget: string
+        required: false
+      - hint: ''
+        name: f_exhibitor-photo
+        label: Exhibitor Photo
+        widget: string
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: dates
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[dates].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: snacks_and_healthy_food_products
+    label: Snacks and Healthy Foods
+    folder: cms/snacks-and-healthy-food-products
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Exhibitor Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_hall
+        label: Hall
+        widget: string
+        required: false
+      - hint: ''
+        name: f_stand
+        label: Stand
+        widget: string
+        required: false
+      - hint: ''
+        name: f_exhibitor-logo
+        label: Exhibitor Logo
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_poc-name
+        label: POC Name
+        widget: string
+        required: false
+      - hint: ''
+        name: f_poc-phone
+        label: POC Phone
+        widget: string
+        required: false
+      - hint: ''
+        name: f_poc-email
+        label: POC Email
+        widget: string
+        required: false
+      - hint: ''
+        name: f_address
+        label: Address
+        widget: string
+        required: false
+      - hint: ''
+        name: f_product-range
+        label: Product Range
+        widget: string
+        required: false
+      - hint: ''
+        name: f_brief
+        label: Brief
+        widget: string
+        required: false
+      - hint: ''
+        name: f_website-link
+        label: Website Link
+        widget: string
+        required: false
+      - hint: ''
+        name: f_exhibitor-photo
+        label: Exhibitor Photo
+        widget: string
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: snacks-and-healthy-food-products
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[snacks-and-healthy-food-products].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: baked_products
+    label: Baked Products
+    folder: cms/baked-products
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Exhibitor Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_hall
+        label: Hall
+        widget: string
+        required: false
+      - hint: ''
+        name: f_stand
+        label: Stand
+        widget: string
+        required: false
+      - hint: ''
+        name: f_exhibitor-logo
+        label: Exhibitor Logo
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_poc-name
+        label: POC Name
+        widget: string
+        required: false
+      - hint: ''
+        name: f_poc-phone
+        label: POC Phone
+        widget: string
+        required: false
+      - hint: ''
+        name: f_poc-email
+        label: POC Email
+        widget: string
+        required: false
+      - hint: ''
+        name: f_address
+        label: Address
+        widget: string
+        required: false
+      - hint: ''
+        name: f_product-range
+        label: Product Range
+        widget: string
+        required: false
+      - hint: ''
+        name: f_brief
+        label: Brief
+        widget: string
+        required: false
+      - hint: ''
+        name: f_website-link
+        label: Website Link
+        widget: string
+        required: false
+      - hint: ''
+        name: f_exhibitor-photo
+        label: Exhibitor Photo
+        widget: string
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: baked-products
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[baked-products].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: poultry
+    label: Poultries
+    folder: cms/poultry
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Exhibitor Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_hall
+        label: Hall
+        widget: string
+        required: false
+      - hint: ''
+        name: f_stand
+        label: Stand
+        widget: string
+        required: false
+      - hint: ''
+        name: f_exhibitor-logo
+        label: Exhibitor Logo
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_poc-name
+        label: POC Name
+        widget: string
+        required: false
+      - hint: ''
+        name: f_poc-phone
+        label: POC Phone
+        widget: string
+        required: false
+      - hint: ''
+        name: f_poc-email
+        label: POC Email
+        widget: string
+        required: false
+      - hint: ''
+        name: f_address
+        label: Address
+        widget: string
+        required: false
+      - hint: ''
+        name: f_product-range
+        label: Product Range
+        widget: string
+        required: false
+      - hint: ''
+        name: f_brief
+        label: Brief
+        widget: string
+        required: false
+      - hint: ''
+        name: f_website-link
+        label: Website Link
+        widget: string
+        required: false
+      - hint: ''
+        name: f_exhibitor-photo
+        label: Exhibitor Photo
+        widget: string
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: poultry
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[poultry].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: pickles_and_dried_canned_foods
+    label: Pickels and Dried & Canned Foods
+    folder: cms/pickles-and-dried-canned-foods
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Exhibitor Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_hall
+        label: Hall
+        widget: string
+        required: false
+      - hint: ''
+        name: f_stand
+        label: Stand
+        widget: string
+        required: false
+      - hint: ''
+        name: f_exhibitor-logo
+        label: Exhibitor Logo
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_poc-name
+        label: POC Name
+        widget: string
+        required: false
+      - hint: ''
+        name: f_poc-phone
+        label: POC Phone
+        widget: string
+        required: false
+      - hint: ''
+        name: f_poc-email
+        label: POC Email
+        widget: string
+        required: false
+      - hint: ''
+        name: f_address
+        label: Address
+        widget: text
+        required: false
+      - hint: ''
+        name: f_product-range
+        label: Product Range
+        widget: text
+        required: false
+      - hint: ''
+        name: f_brief
+        label: Brief
+        widget: text
+        required: false
+      - hint: ''
+        name: f_website-link
+        label: Website Link
+        widget: string
+        required: false
+      - hint: ''
+        name: f_exhibitor-photo
+        label: Exhibitor Photo
+        widget: string
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: pickles-and-dried-canned-foods
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[pickles-and-dried-canned-foods].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: frozen_fruits_and_vegetables
+    label: Frozen Fruits and Vegetables
+    folder: cms/frozen-fruits-and-vegetables
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Exhibitor Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_hall
+        label: Hall
+        widget: string
+        required: false
+      - hint: ''
+        name: f_stand
+        label: Stand
+        widget: string
+        required: false
+      - hint: ''
+        name: f_exhibitor-logo
+        label: Exhibitor Logo
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_poc-name
+        label: POC Name
+        widget: string
+        required: false
+      - hint: ''
+        name: f_poc-phone
+        label: POC Phone
+        widget: string
+        required: false
+      - hint: ''
+        name: f_poc-email
+        label: POC Email
+        widget: string
+        required: false
+      - hint: ''
+        name: f_address
+        label: Address
+        widget: text
+        required: false
+      - hint: ''
+        name: f_product-range
+        label: Product Range
+        widget: text
+        required: false
+      - hint: ''
+        name: f_brief
+        label: Brief
+        widget: text
+        required: false
+      - hint: ''
+        name: f_website-link
+        label: Website Link
+        widget: string
+        required: false
+      - hint: ''
+        name: f_exhibitor-photo
+        label: Exhibitor Photo
+        widget: string
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: frozen-fruits-and-vegetables
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[frozen-fruits-and-vegetables].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: halva_tahinis_honey_and_jams
+    label: Halva, Tahinis, Honey and Jams
+    folder: cms/halva-tahinis-honey-and-jams
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Exhibitor Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_hall
+        label: Hall
+        widget: string
+        required: false
+      - hint: ''
+        name: f_stand
+        label: Stand
+        widget: string
+        required: false
+      - hint: ''
+        name: f_exhibitor-logo
+        label: Exhibitor Logo
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_poc-name
+        label: POC Name
+        widget: string
+        required: false
+      - hint: ''
+        name: f_poc-phone
+        label: POC Phone
+        widget: string
+        required: false
+      - hint: ''
+        name: f_poc-email
+        label: POC Email
+        widget: string
+        required: false
+      - hint: ''
+        name: f_address
+        label: Address
+        widget: string
+        required: false
+      - hint: ''
+        name: f_product-range
+        label: Product Range
+        widget: string
+        required: false
+      - hint: ''
+        name: f_brief
+        label: Brief
+        widget: string
+        required: false
+      - hint: ''
+        name: f_website-link
+        label: Website Link
+        widget: string
+        required: false
+      - hint: ''
+        name: f_exhibitor-photo
+        label: Exhibitor Photo
+        widget: string
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: halva-tahinis-honey-and-jams
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[halva-tahinis-honey-and-jams].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: dairies
+    label: Dairies
+    folder: cms/dairies
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Exhibitor Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_hall
+        label: Hall
+        widget: string
+        required: false
+      - hint: ''
+        name: f_stand
+        label: Stand
+        widget: string
+        required: false
+      - hint: ''
+        name: f_exhibitor-logo
+        label: Exhibitor Logo
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_poc-name
+        label: POC Name
+        widget: string
+        required: false
+      - hint: ''
+        name: f_poc-phone
+        label: POC Phone
+        widget: string
+        required: false
+      - hint: ''
+        name: f_poc-email
+        label: POC Email
+        widget: string
+        required: false
+      - hint: ''
+        name: f_address
+        label: Address
+        widget: string
+        required: false
+      - hint: ''
+        name: f_product-range
+        label: Product Range
+        widget: text
+        required: false
+      - hint: ''
+        name: f_brief
+        label: Brief
+        widget: text
+        required: false
+      - hint: ''
+        name: f_website-link
+        label: Website Link
+        widget: string
+        required: false
+      - hint: ''
+        name: f_exhibitor-photo
+        label: Exhibitor Photo
+        widget: string
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: dairies
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[dairies].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: pulses_grains
+    label: Pulses & Grains
+    folder: cms/pulses-grains
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Exhibitor Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_hall
+        label: Hall
+        widget: string
+        required: false
+      - hint: ''
+        name: f_stand
+        label: Stand
+        widget: string
+        required: false
+      - hint: ''
+        name: f_exhibitor-logo
+        label: Exhibitor Logo
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_poc-name
+        label: POC Name
+        widget: string
+        required: false
+      - hint: ''
+        name: f_poc-phone
+        label: POC Phone
+        widget: string
+        required: false
+      - hint: ''
+        name: f_poc-email
+        label: POC Email
+        widget: string
+        required: false
+      - hint: ''
+        name: f_address
+        label: Address
+        widget: string
+        required: false
+      - hint: ''
+        name: f_product-range
+        label: Product Range
+        widget: text
+        required: false
+      - hint: ''
+        name: f_brief
+        label: Brief
+        widget: text
+        required: false
+      - hint: ''
+        name: f_website-link
+        label: Website Link
+        widget: string
+        required: false
+      - hint: ''
+        name: f_exhibitor-photo
+        label: Exhibitor Photo
+        widget: string
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: pulses-grains
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[pulses-grains].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: coffe_tea_herbal_teas
+    label: Coffe, Tea & Herbal Teas
+    folder: cms/coffe-tea-herbal-teas
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Exhibitor Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_hall
+        label: Hall
+        widget: string
+        required: false
+      - hint: ''
+        name: f_stand
+        label: Stand
+        widget: string
+        required: false
+      - hint: ''
+        name: f_exhibitor-logo
+        label: Exhibitor Logo
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_poc-name
+        label: POC Name
+        widget: string
+        required: false
+      - hint: ''
+        name: f_poc-phone
+        label: POC Phone
+        widget: string
+        required: false
+      - hint: ''
+        name: f_poc-email
+        label: POC Email
+        widget: string
+        required: false
+      - hint: ''
+        name: f_address
+        label: Address
+        widget: string
+        required: false
+      - hint: ''
+        name: f_product-range
+        label: Product Range
+        widget: string
+        required: false
+      - hint: ''
+        name: f_brief
+        label: Brief
+        widget: string
+        required: false
+      - hint: ''
+        name: f_website-link
+        label: Website Link
+        widget: string
+        required: false
+      - hint: ''
+        name: f_exhibitor-photo
+        label: Exhibitor Photo
+        widget: string
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: coffe-tea-herbal-teas
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[coffe-tea-herbal-teas].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: ingredients
+    label: Ingredients
+    folder: cms/ingredients
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Exhibitor Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_hall
+        label: Hall
+        widget: string
+        required: false
+      - hint: ''
+        name: f_stand
+        label: Stand
+        widget: string
+        required: false
+      - hint: ''
+        name: f_exhibitor-logo
+        label: Exhibitor Logo
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_poc-name
+        label: POC Name
+        widget: string
+        required: false
+      - hint: ''
+        name: f_poc-phone
+        label: POC Phone
+        widget: string
+        required: false
+      - hint: ''
+        name: f_poc-email
+        label: POC Email
+        widget: string
+        required: false
+      - hint: ''
+        name: f_address
+        label: Address
+        widget: text
+        required: false
+      - hint: ''
+        name: f_product-range
+        label: Product Range
+        widget: text
+        required: false
+      - hint: ''
+        name: f_brief
+        label: Brief
+        widget: text
+        required: false
+      - hint: ''
+        name: f_website-link
+        label: Website Link
+        widget: string
+        required: false
+      - hint: ''
+        name: f_exhibitor-photo
+        label: Exhibitor Photo
+        widget: string
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: ingredients
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[ingredients].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: juices_and_concentrates
+    label: Juices and Concentrates
+    folder: cms/juices-and-concentrates
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Exhibitor Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_hall
+        label: Hall
+        widget: string
+        required: false
+      - hint: ''
+        name: f_stand
+        label: Stand
+        widget: string
+        required: false
+      - hint: ''
+        name: f_exhibitor-logo
+        label: Exhibitor Logo
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_poc-name
+        label: POC Name
+        widget: string
+        required: false
+      - hint: ''
+        name: f_poc-phone
+        label: POC Phone
+        widget: string
+        required: false
+      - hint: ''
+        name: f_poc-email
+        label: POC Email
+        widget: string
+        required: false
+      - hint: ''
+        name: f_address
+        label: Address
+        widget: string
+        required: false
+      - hint: ''
+        name: f_product-range
+        label: Product Range
+        widget: string
+        required: false
+      - hint: ''
+        name: f_brief
+        label: Brief
+        widget: string
+        required: false
+      - hint: ''
+        name: f_website-link
+        label: Website Link
+        widget: string
+        required: false
+      - hint: ''
+        name: f_exhibitor-photo
+        label: Exhibitor Photo
+        widget: string
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: juices-and-concentrates
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[juices-and-concentrates].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: olives_olive_oils_and_edible_essential_oils
+    label: Olives, Olive Oil, and Edible & Essential Oils
+    folder: cms/olives-olive-oils-and-edible-essential-oils
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Exhibitor Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_hall
+        label: Hall
+        widget: string
+        required: false
+      - hint: ''
+        name: f_stand
+        label: Stand
+        widget: string
+        required: false
+      - hint: ''
+        name: f_exhibitor-logo
+        label: Exhibitor Logo
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_poc-name
+        label: POC Name
+        widget: string
+        required: false
+      - hint: ''
+        name: f_poc-phone
+        label: POC Phone
+        widget: string
+        required: false
+      - hint: ''
+        name: f_poc-email
+        label: POC Email
+        widget: string
+        required: false
+      - hint: ''
+        name: f_address
+        label: Address
+        widget: string
+        required: false
+      - hint: ''
+        name: f_product-range
+        label: Product Range
+        widget: string
+        required: false
+      - hint: ''
+        name: f_brief
+        label: Brief
+        widget: string
+        required: false
+      - hint: ''
+        name: f_website-link
+        label: Website Link
+        widget: string
+        required: false
+      - hint: ''
+        name: f_exhibitor-photo
+        label: Exhibitor Photo
+        widget: string
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: olives-olive-oils-and-edible-essential-oils
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[olives-olive-oils-and-edible-essential-oils].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: dressing_and_sauces
+    label: Dressing and Sauces
+    folder: cms/dressing-and-sauces
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Exhibitor Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_hall
+        label: Hall
+        widget: string
+        required: false
+      - hint: ''
+        name: f_stand
+        label: Stand
+        widget: string
+        required: false
+      - hint: ''
+        name: f_exhibitor-logo
+        label: Exhibitor Logo
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_poc-name
+        label: POC Name
+        widget: string
+        required: false
+      - hint: ''
+        name: f_poc-phone
+        label: POC Phone
+        widget: string
+        required: false
+      - hint: ''
+        name: f_poc-email
+        label: POC Email
+        widget: string
+        required: false
+      - hint: ''
+        name: f_address
+        label: Address
+        widget: string
+        required: false
+      - hint: ''
+        name: f_product-range
+        label: Product Range
+        widget: text
+        required: false
+      - hint: ''
+        name: f_brief
+        label: Brief
+        widget: text
+        required: false
+      - hint: ''
+        name: f_website-link
+        label: Website Link
+        widget: string
+        required: false
+      - hint: ''
+        name: f_exhibitor-photo
+        label: Exhibitor Photo
+        widget: string
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: dressing-and-sauces
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[dressing-and-sauces].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: pasta_wheat_derivatives
+    label: Pasta & Wheat Derivatives
+    folder: cms/pasta-wheat-derivatives
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Exhibitor Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_hall
+        label: Hall
+        widget: string
+        required: false
+      - hint: ''
+        name: f_stand
+        label: Stand
+        widget: string
+        required: false
+      - hint: ''
+        name: f_exhibitor-logo
+        label: Exhibitor Logo
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_poc-name
+        label: POC Name
+        widget: string
+        required: false
+      - hint: ''
+        name: f_poc-phone
+        label: POC Phone
+        widget: string
+        required: false
+      - hint: ''
+        name: f_poc-email
+        label: POC Email
+        widget: string
+        required: false
+      - hint: ''
+        name: f_address
+        label: Address
+        widget: text
+        required: false
+      - hint: ''
+        name: f_product-range
+        label: Product Range
+        widget: text
+        required: false
+      - hint: ''
+        name: f_brief
+        label: Brief
+        widget: text
+        required: false
+      - hint: ''
+        name: f_website-link
+        label: Website Link
+        widget: string
+        required: false
+      - hint: ''
+        name: f_exhibitor-photo
+        label: Exhibitor Photo
+        widget: string
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: pasta-wheat-derivatives
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[pasta-wheat-derivatives].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: tomato_paste
+    label: Tomato Pastes
+    folder: cms/tomato-paste
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Exhibitor Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_hall
+        label: Hall
+        widget: string
+        required: false
+      - hint: ''
+        name: f_stand
+        label: Stand
+        widget: string
+        required: false
+      - hint: ''
+        name: f_exhibitor-logo
+        label: Exhibitor Logo
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_poc-name
+        label: POC Name
+        widget: string
+        required: false
+      - hint: ''
+        name: f_poc-phone
+        label: POC Phone
+        widget: string
+        required: false
+      - hint: ''
+        name: f_poc-email
+        label: POC Email
+        widget: string
+        required: false
+      - hint: ''
+        name: f_address
+        label: Address
+        widget: string
+        required: false
+      - hint: ''
+        name: f_product-range
+        label: Product Range
+        widget: string
+        required: false
+      - hint: ''
+        name: f_brief
+        label: Brief
+        widget: string
+        required: false
+      - hint: ''
+        name: f_website-link
+        label: Website Link
+        widget: string
+        required: false
+      - hint: ''
+        name: f_exhibitor-photo
+        label: Exhibitor Photo
+        widget: string
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: tomato-paste
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[tomato-paste].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - label: Theme Settings
+    name: settings
+    identifier_field: title
+    extension: json
+    create: false
+    delete: false
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    files:
+      - label: General
+        name: site
+        file: cms/_data/settings/site.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: General
+          - hint: Full domain url (needed for a correct sitemap file)
+            name: domain
+            label: Domain
+            widget: string
+            required: false
+          - name: favicon
+            label: Favicon
+            widget: image
+            allow_multiple: false
+            required: false
+          - name: apple_touch_icon
+            label: Apple Touch Icon
+            widget: image
+            allow_multiple: false
+            required: false
+          - name: header_additional_content
+            label: Additional Content Header
+            hint: Content here will be placed before </head> tag
+            widget: text
+            required: false
+          - name: footer_additional_content
+            label: Additional Content Footer
+            hint: Content here will be placed before </body> tag
+            widget: text
+            required: false
+          - name: images_optimization
+            label: Images Optimization
+            widget: object
+            collapsed: false
+            fields:
+              - label: Image Formats
+                name: formats
+                widget: select
+                multiple: true
+                options:
+                  - label: Avif
+                    value: avif
+                  - label: Webp
+                    value: webp
+              - label: Image Dimensions
+                name: dimensions
+                widget: select
+                multiple: true
+                options:
+                  - label: '500'
+                    value: 500
+                  - label: '800'
+                    value: 800
+                  - label: '1080'
+                    value: 1080
+                  - label: '1600'
+                    value: 1600
+                  - label: '2000'
+                    value: 2000
+                  - label: '2600'
+                    value: 2600
+      - label: Colors
+        name: colors
+        file: cms/_data/colors.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Colors
+      - label: Texts
+        name: texts
+        file: cms/_data/texts.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Texts
+          - hint: 'Original text: Home, key: 2268ff'
+            label: Text
+            name: 2268ff
+            widget: string
+          - hint: 'Original text: Exhibitors, key: -14fef729'
+            label: Text
+            name: '-14fef729'
+            widget: string
+          - hint: 'Original text: Contact the FEC, key: 2a031315'
+            label: Text
+            name: 2a031315
+            widget: string
+          - hint: 'Original text: An Egyptian Tasty Gift to the World, key: -1d1b4f59'
+            label: Text
+            name: '-1d1b4f59'
+            widget: string
+          - hint: 'Original text: Egypt at Gulfood, key: 5c742494'
+            label: Text
+            name: 5c742494
+            widget: string
+          - hint: 'Original text: Dubai World Trade Center, key: 6213d286'
+            label: Text
+            name: 6213d286
+            widget: string
+          - hint: 'Original text: 19, key: 628'
+            label: Text
+            name: '628'
+            widget: string
+          - hint: 'Original text: th, key: e74'
+            label: Text
+            name: e74
+            widget: string
+          - hint: 'Original text:  - 23, key: 1d7e334'
+            label: Text
+            name: 1d7e334
+            widget: string
+          - hint: 'Original text: rd, key: e32'
+            label: Text
+            name: e32
+            widget: string
+          - hint: 'Original text: February, 2024, key: 7fb5fab6'
+            label: Text
+            name: 7fb5fab6
+            widget: string
+          - hint: 'Original text: 150+, key: 17131f'
+            label: Text
+            name: 17131f
+            widget: string
+          - hint: 'Original text: 300+, key: 17e918'
+            label: Text
+            name: '17e918'
+            widget: string
+          - hint: 'Original text: Products, key: -37f9ca7c'
+            label: Text
+            name: '-37f9ca7c'
+            widget: string
+          - hint: 'Original text: 30+, key: c56e'
+            label: Text
+            name: c56e
+            widget: string
+          - hint: 'Original text: Sectors, key: -2757d253'
+            label: Text
+            name: '-2757d253'
+            widget: string
+          - hint: 'Original text: The Food Export Council, key: -1fab0c38'
+            label: Text
+            name: '-1fab0c38'
+            widget: string
+          - hint: >-
+              Original text: An ambitious mission to create a new world full of,
+              key: 6ba00b7a
+            label: Text
+            name: 6ba00b7a
+            widget: string
+          - hint: >-
+              Original text:  Egyptian joy is a step closer to realization!,
+              key: -75d2b9b6
+            label: Text
+            name: '-75d2b9b6'
+            widget: string
+          - hint: 'Original text: Exquisite Egyptian Foods, key: 14142337'
+            label: Text
+            name: '14142337'
+            widget: string
+          - hint: >-
+              Original text: Showing some of our top-notch producers of our
+              exquisite quality Egyptian food products. We promise you there’s
+              something you’ll love! But, we know its overwhelming to see all
+              this beauty in a couple of days, so check them out here! (We’d be
+              glad to connect you with whomever you want!), key: 898e69d
+            label: Text
+            name: 898e69d
+            widget: text
+          - hint: 'Original text: Get in Touch!, key: -2a7fa42d'
+            label: Text
+            name: '-2a7fa42d'
+            widget: string
+          - hint: >-
+              Original text: Bringing you the best frozen strawberries you’d
+              find anywhere in the world!, key: -6a60e58a
+            label: Text
+            name: '-6a60e58a'
+            widget: string
+          - hint: >-
+              Original text: A beauty of oleaginous oils and fruits that brings
+              out the best qualities of your foods, key: 2d4d2394
+            label: Text
+            name: 2d4d2394
+            widget: string
+          - hint: >-
+              Original text: Juices and concentrates that makes you taste the
+              beauties of life, key: -396f2835
+            label: Text
+            name: '-396f2835'
+            widget: string
+          - hint: >-
+              Original text: Bringing a Taste of Egypt Over to the Gulf, key:
+              -6b5f573a
+            label: Text
+            name: '-6b5f573a'
+            widget: string
+          - hint: >-
+              Original text: In recent years, Egypt has dedicated considerable
+              effort to elevate its agricultural output to achieve global
+              recognition. Consequently, the country's exports of processed food
+              have experienced remarkable growth, soaring to $5.1billion USD in
+              2023., key: -7fb97113
+            label: Text
+            name: '-7fb97113'
+            widget: text
+          - hint: >-
+              Original text: If you are just as excited about what Egypt has to
+              offer, see who of our exhibitors is going to be in this year’s
+              Gulfood!, key: 51f3051d
+            label: Text
+            name: 51f3051d
+            widget: text
+          - hint: 'Original text: See Exhibitors, key: -1ab8711c'
+            label: Text
+            name: '-1ab8711c'
+            widget: string
+          - hint: 'Original text: FEC Partners, key: -148fdf9'
+            label: Text
+            name: '-148fdf9'
+            widget: string
+          - hint: 'Original text: The World’s Best, key: 3ff676a7'
+            label: Text
+            name: 3ff676a7
+            widget: string
+          - hint: >-
+              Original text: Egypt is very proud of its products and producers.
+              When it comes to food, Egypt is an enthusiast. We aim to grow
+              Egyptian foods to become an international sensation. Although not
+              an easy task, it won’t be our first time. Since the dawn of time,
+              our crops have been exported everywhere, from Rome to the Arabian
+              Peninsula., key: 4fc85407
+            label: Text
+            name: 4fc85407
+            widget: text
+          - hint: 'Original text: No items found., key: 3d503d2b'
+            label: Text
+            name: 3d503d2b
+            widget: string
+          - hint: 'Original text: Visit All Exhibitors, key: -40e55b95'
+            label: Text
+            name: '-40e55b95'
+            widget: string
+          - hint: 'Original text: Growing Far East and West, key: 73fad2a1'
+            label: Text
+            name: 73fad2a1
+            widget: string
+          - hint: >-
+              Original text: Egypt is spicing things up on the food export
+              scene, spreading its culinary delights both east and west. From
+              cozy agreements in Asia to sassy connections with the West, Egypt
+              is turning heads as a global foodie hotspot. Watch out world,
+              Egypt's flavor game is on the rise!, key: 4e70d038
+            label: Text
+            name: 4e70d038
+            widget: text
+          - hint: 'Original text: Get in touch, key: -5230a9d2'
+            label: Text
+            name: '-5230a9d2'
+            widget: string
+          - hint: 'Original text: Let us know how we can help, key: -7ab7d3a5'
+            label: Text
+            name: '-7ab7d3a5'
+            widget: string
+          - hint: 'Original text: Name, key: 24eeab'
+            label: Text
+            name: 24eeab
+            widget: string
+          - hint: 'Original text: Email, key: 3ff5b7c'
+            label: Text
+            name: 3ff5b7c
+            widget: string
+          - hint: 'Original text: Message, key: -63dc6819'
+            label: Text
+            name: '-63dc6819'
+            widget: string
+          - hint: >-
+              Original text: Thank you! Your submission has been received!, key:
+              5a0ea5a1
+            label: Text
+            name: 5a0ea5a1
+            widget: string
+          - hint: >-
+              Original text: Oops! Something went wrong while submitting the
+              form., key: -7c112e99
+            label: Text
+            name: '-7c112e99'
+            widget: string
+          - hint: 'Original text: Contact, key: -64104400'
+            label: Text
+            name: '-64104400'
+            widget: string
+          - hint: 'Original text: Food Export Council, Egypt, key: -1cde2ab0'
+            label: Text
+            name: '-1cde2ab0'
+            widget: string
+          - hint: |-
+              Original text: 80 Street 250, Maadi El Sarayat
+                          Maadi, Cairo, Egypt, 11728, key: 7f1c285e
+            label: Text
+            name: 7f1c285e
+            widget: string
+          - hint: 'Original text: Phone:, key: -718ea354'
+            label: Text
+            name: '-718ea354'
+            widget: string
+          - hint: 'Original text:  (+20) 100 005 5734, key: 590cb055'
+            label: Text
+            name: 590cb055
+            widget: string
+          - hint: 'Original text: Landline:, key: -33a7a865'
+            label: Text
+            name: '-33a7a865'
+            widget: string
+          - hint: 'Original text:  (+20) 227 518 506, key: c312c56'
+            label: Text
+            name: c312c56
+            widget: string
+          - hint: 'Original text: Email: , key: 19673a2'
+            label: Text
+            name: 19673a2
+            widget: string
+          - hint: >-
+              Original text: heba@feceg.com - foodexportcouncil@feceg.com, key:
+              -27ba0a56
+            label: Text
+            name: '-27ba0a56'
+            widget: string
+          - hint: >-
+              Original text: ⓒ 2023 Food Export Council. All rights reserved.,
+              key: 2b333672
+            label: Text
+            name: 2b333672
+            widget: string
+          - hint: >-
+              Original text: By using this website you agree to FEC terms and
+              conditions., key: 4440ff6a
+            label: Text
+            name: 4440ff6a
+            widget: string
+          - hint: >-
+              Original text: Powered by: Marwan Sameh Company® (LLC) 2023., key:
+              -59b1c013
+            label: Text
+            name: '-59b1c013'
+            widget: string
+          - hint: 'Original text: Click here to get in touch., key: 45da8873'
+            label: Text
+            name: 45da8873
+            widget: string
+          - hint: 'Original text: Snacks and Healthy Foods, key: 3c13776e'
+            label: Text
+            name: 3c13776e
+            widget: string
+          - hint: 'Original text: -, key: 2d'
+            label: Text
+            name: 2d
+            widget: string
+          - hint: 'Original text: Location, key: 752a03d5'
+            label: Text
+            name: 752a03d5
+            widget: string
+          - hint: 'Original text: Product Range, key: 14e1aa8c'
+            label: Text
+            name: 14e1aa8c
+            widget: string
+          - hint: 'Original text: Company Brief, key: 13c6e6d7'
+            label: Text
+            name: 13c6e6d7
+            widget: string
+          - hint: 'Original text: Company Details, key: -6e20b2a1'
+            label: Text
+            name: '-6e20b2a1'
+            widget: string
+          - hint: 'Original text: Exhibitor Website, key: 27939377'
+            label: Text
+            name: '27939377'
+            widget: string
+          - hint: 'Original text: Product Photo, key: 14c8af81'
+            label: Text
+            name: 14c8af81
+            widget: string
+          - hint: 'Original text: Dairy, key: 3ebeeb3'
+            label: Text
+            name: 3ebeeb3
+            widget: string
+          - hint: 'Original text: Dressing and Sauces, key: -722ea998'
+            label: Text
+            name: '-722ea998'
+            widget: string
+          - hint: 'Original text: Frozen Fruits and Vegetables, key: 528dec5c'
+            label: Text
+            name: 528dec5c
+            widget: string
+          - hint: 'Original text: Dates, key: 3ec1665'
+            label: Text
+            name: 3ec1665
+            widget: string
+          - hint: 'Original text: Coffe, Tea & Herbal Teas, key: -644dbac'
+            label: Text
+            name: '-644dbac'
+            widget: string
+          - hint: 'Original text: Halva, Tahinis, Honey and Jams, key: 34596837'
+            label: Text
+            name: '34596837'
+            widget: string
+          - hint: 'Original text: Ingredients, key: -19fa8f5e'
+            label: Text
+            name: '-19fa8f5e'
+            widget: string
+          - hint: 'Original text: Pasta & Wheat Derivatives, key: -5ac7c8d8'
+            label: Text
+            name: '-5ac7c8d8'
+            widget: string
+          - hint: 'Original text: Juices and Concentrates, key: -49d3ab41'
+            label: Text
+            name: '-49d3ab41'
+            widget: string
+          - hint: >-
+              Original text: Olives, Olive Oil, and Edible & Essential Oils,
+              key: -7a12f2c2
+            label: Text
+            name: '-7a12f2c2'
+            widget: string
+          - hint: 'Original text: Tomato Pastes, key: -d4a66ea'
+            label: Text
+            name: '-d4a66ea'
+            widget: string
+          - hint: 'Original text: Pickles and Dried & Canned Foods, key: -e38785e'
+            label: Text
+            name: '-e38785e'
+            widget: string
+          - hint: 'Original text: Pulses & Grains, key: -11671a08'
+            label: Text
+            name: '-11671a08'
+            widget: string
+          - hint: 'Original text: Poultry, key: 4c000905'
+            label: Text
+            name: 4c000905
+            widget: string
+      - label: Links
+        name: links
+        file: cms/_data/links.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Links
+          - hint: 'Original link: /, key: 2f'
+            label: Link
+            name: 2f
+            widget: string
+          - hint: 'Original link: /exhibitors/, key: 7b53c6c9'
+            label: Link
+            name: 7b53c6c9
+            widget: string
+          - hint: 'Original link: #Form, key: 20eb787'
+            label: Link
+            name: 20eb787
+            widget: string
+          - hint: >-
+              Original link: https://www.facebook.com/FoodExportCouncil/, key:
+              19a2b790
+            label: Link
+            name: 19a2b790
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.linkedin.com/company/food-export-council-fec/, key:
+              -470db995
+            label: Link
+            name: '-470db995'
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.instagram.com/egyptianfoodexportcouncil?igsh=aWt6eG5zd2ZudDI2,
+              key: 48d2d4e0
+            label: Link
+            name: 48d2d4e0
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.youtube.com/channel/UC5YMx8xFGQqEHjCGcG1SY4g, key:
+              2ee3cc4
+            label: Link
+            name: 2ee3cc4
+            widget: string
+          - hint: 'Original link: https://www.cibeg.com/, key: -67c04a5c'
+            label: Link
+            name: '-67c04a5c'
+            widget: string
+          - hint: 'Original link: https://en.tuv.at/, key: -4a5ad533'
+            label: Link
+            name: '-4a5ad533'
+            widget: string
+          - hint: 'Original link: https://foodafrica-expo.com/, key: -3256409c'
+            label: Link
+            name: '-3256409c'
+            widget: string
+          - hint: 'Original link: https://www.transmar.com/, key: -68d7e700'
+            label: Link
+            name: '-68d7e700'
+            widget: string
+          - hint: 'Original link: http://www.Sullex.com, key: 73fa9b11'
+            label: Link
+            name: 73fa9b11
+            widget: string
+          - hint: 'Original link: https://www.sgs.com/en, key: 398f596c'
+            label: Link
+            name: 398f596c
+            widget: string
+          - hint: 'Original link: https://www.maersk.com/, key: -7e76d843'
+            label: Link
+            name: '-7e76d843'
+            widget: string
+          - hint: 'Original link: http://www.irs-c.com, key: 6f80c9ea'
+            label: Link
+            name: 6f80c9ea
+            widget: string
+          - hint: 'Original link: https://gblease.com, key: 638e0343'
+            label: Link
+            name: '638e0343'
+            widget: string
+          - hint: 'Original link: http://www.3bunitedgroup.com/, key: 7af0fd18'
+            label: Link
+            name: 7af0fd18
+            widget: string
+          - hint: 'Original link: https://kytrademarks.com/ar/, key: -6f63a5bf'
+            label: Link
+            name: '-6f63a5bf'
+            widget: string
+          - hint: 'Original link: https://bureauveritas-eg.com/, key: 519c0164'
+            label: Link
+            name: 519c0164
+            widget: string
+          - hint: 'Original link: https://nowlun.com/, key: 2a2841be'
+            label: Link
+            name: 2a2841be
+            widget: string
+          - hint: 'Original link: http://www.contentkhana.com/, key: 415e10d5'
+            label: Link
+            name: 415e10d5
+            widget: string
+          - hint: 'Original link: http://www.eisas.com.eg, key: -28dd4fb'
+            label: Link
+            name: '-28dd4fb'
+            widget: string
+          - hint: 'Original link: http://www.cloudastick.com/, key: 73613fc1'
+            label: Link
+            name: 73613fc1
+            widget: string
+          - hint: 'Original link: https://www.cotecna.com/, key: -3b4818f7'
+            label: Link
+            name: '-3b4818f7'
+            widget: string
+          - hint: 'Original link: https://www.overseass.com/, key: 167c7487'
+            label: Link
+            name: 167c7487
+            widget: string
+          - hint: 'Original link: https://www.riileg.com/, key: 2ac3d3a'
+            label: Link
+            name: 2ac3d3a
+            widget: string
+          - hint: 'Original link: https://www.bdpinternational.com/, key: 686ba616'
+            label: Link
+            name: 686ba616
+            widget: string
+          - hint: 'Original link: https://www.tankoilgroup.com/, key: -5b77dc81'
+            label: Link
+            name: '-5b77dc81'
+            widget: string
+          - hint: 'Original link: https://www.masterpet.net/en/, key: -37d91c43'
+            label: Link
+            name: '-37d91c43'
+            widget: string
+          - hint: 'Original link: https://thinkbig-gih.com/, key: -4d5cfeda'
+            label: Link
+            name: '-4d5cfeda'
+            widget: string
+          - hint: 'Original link: https://www.usaid.gov/, key: -94ef749'
+            label: Link
+            name: '-94ef749'
+            widget: string
+          - hint: 'Original link: http://www.eeca.gov.eg/, key: 419b5e86'
+            label: Link
+            name: 419b5e86
+            widget: string
+          - hint: 'Original link: https://reg.nfsa.gov.eg/, key: -17568d92'
+            label: Link
+            name: '-17568d92'
+            widget: string
+          - hint: 'Original link: https://www.qcap-egypt.com/, key: -17f35d79'
+            label: Link
+            name: '-17f35d79'
+            widget: string
+          - hint: 'Original link: https://www.goeic.gov.eg/, key: 5903a6d0'
+            label: Link
+            name: 5903a6d0
+            widget: string
+          - hint: 'Original link: https://www.blueskygroup.net/, key: 2cb99202'
+            label: Link
+            name: 2cb99202
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.ihg.com/holidayinn/hotels/us/en/cairo/crohi/hoteldetail?fromRedirect=true&qSrt=sBR&qSlH=crohi&setPMCookies=true&qSHBrC=HI&qDest=Cornish%20El%20Nil%2C%20Cairo%2C%20EG&srb_u=1,
+              key: 2efed0ac
+            label: Link
+            name: 2efed0ac
+            widget: string
+          - hint: 'Original link: https://marwansameh.com/, key: 2b34728f'
+            label: Link
+            name: 2b34728f
+            widget: string
+          - hint: 'Original link: #, key: 23'
+            label: Link
+            name: '23'
+            widget: string
+          - hint: >-
+              Original link: http://snacks-and-healthy-food-products, key:
+              2c3bee77
+            label: Link
+            name: 2c3bee77
+            widget: string
+      - label: Images
+        name: images
+        file: cms/_data/images.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Images
+          - label: Image
+            name: 3cbcd672
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 505f1b93
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i16d0b76d
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i6a8ddc0c
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i1e70a4ae
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i6957d6f6
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i6a9bf38d
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i6ac63a10
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i34451834
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i72a35aff
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i34532fb5
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i343700b3
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i34614736
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 611dd774
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 1cbdc0e4
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-1ad730ca'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-65191692'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 4bc5256e
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-1d96be21'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-72a35aff'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-693fb776'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: c8a503c
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 633ff6ae
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 634e0e2f
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: e17ee23
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: deda7a0
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 637854b2
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 636a3d31
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-740eb4'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: dfbbf21
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: e2605a4
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: a59e3aa
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-62e73c41'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 395e0ab1
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-4d592aa7'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-6dc66ea2'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-389bc6f5'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-74f8ae63'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-3d829f97'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 66e21aee
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-ca028c5'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '12453099'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 3965ba00
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-6fd3fa50'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 47f73a25
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-7a603e85'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-36cd21fd'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 354a84d3
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 390da011
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-426b0a59'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-75deb15f'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-1865af1'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-5ce05a8e'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 47df5217
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 28539d17
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-21cafbd6'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 1a05075b
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 51eaedc4
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 44a1dd5d
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 18adcb4d
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-53fd7cf6'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-2389a36c'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 1c14d6f1
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-2f835112'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 635c25b0
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 101fa572
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-295906dc'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-3fceaa9d'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+      - label: eCommerce
+        name: ecommerce
+        file: cms/_data/settings/ecommerce.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: eCommerce
+          - label: Currencies and Formats
+            name: currencies_and_formats
+            widget: object
+            fields:
+              - hint: >-
+                  Template used to format the price, you can use following
+                  placeholders: {amount}, {currencyCode}, {symbol}
+                name: template
+                label: Price Template
+                widget: string
+                required: true
+              - hint: Character to divide decimals
+                name: decimal
+                label: Decimal
+                widget: string
+                required: true
+              - hint: Character to group amount
+                name: group
+                label: Group
+                widget: string
+                required: true
+              - hint: Number of fraction digits
+                name: fractionDigits
+                label: Fraction Digits
+                widget: number
+                required: true
+                value_type: int
+              - hint: Hide decimals for whole prices
+                name: hideDecimalForWholeNumbers
+                label: Hide decimals
+                widget: boolean
+                required: false
+              - hint: ''
+                name: currencies
+                label: Currencies
+                widget: list
+                required: true
+                min: 1
+                fields:
+                  - hint: Currency Code (3 char) all lowercase
+                    name: currencyCode
+                    label: Currency Code
+                    widget: string
+                    required: true
+                  - hint: ''
+                    name: symbol
+                    label: Symbol
+                    widget: string
+                    required: true
+          - label: Snipcart
+            name: snipcart
+            widget: object
+            fields:
+              - hint: Public Api Key
+                name: apiKey
+                label: Api Key
+                widget: string
+                required: true
+          - label: Snipcart Style
+            name: css
+            widget: object
+            fields:
+              - hint: 'Original Font Family: Open Sans,sans-serif'
+                name: main-font
+                label: Main font
+                widget: string
+                required: true
+              - hint: 'Original Font Family: Montserrat,sans-serif'
+                name: heading-font
+                label: Heading font
+                widget: string
+                required: true
+              - hint: 'Original color: #f7f7f8'
+                name: bgColor-alt
+                label: BgColor alt
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #fff'
+                name: bgColor-badge
+                label: BgColor badge
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #fceae8'
+                name: bgColor-buttonDanger-active
+                label: BgColor buttonDanger active
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #fceae8'
+                name: bgColor-buttonDanger-focus
+                label: BgColor buttonDanger focus
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #fdefed'
+                name: bgColor-buttonDanger-hover
+                label: BgColor buttonDanger hover
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #1a4db3'
+                name: bgColor-buttonPrimary
+                label: BgColor buttonPrimary
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #1a4db3'
+                name: bgColor-buttonPrimary-active
+                label: BgColor buttonPrimary active
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #1a4db3'
+                name: bgColor-buttonPrimary-focus
+                label: BgColor buttonPrimary focus
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #0d59f2'
+                name: bgColor-buttonPrimary-hover
+                label: BgColor buttonPrimary hover
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #e7f6fe'
+                name: bgColor-buttonSecondary-active
+                label: BgColor buttonSecondary active
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #ecf8fe'
+                name: bgColor-buttonSecondary-focus
+                label: BgColor buttonSecondary focus
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #ecf8fe'
+                name: bgColor-buttonSecondary-hover
+                label: BgColor buttonSecondary hover
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #fff'
+                name: bgColor-default
+                label: BgColor default
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #fff'
+                name: bgColor-input
+                label: BgColor input
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #0aa7f5'
+                name: bgColor-input-checked
+                label: BgColor input checked
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #f1f2f4'
+                name: bgColor-input-disabled
+                label: BgColor input disabled
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #fff'
+                name: bgColor-input-focus
+                label: BgColor input focus
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #fff'
+                name: bgColor-input-hover
+                label: BgColor input hover
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: transparent'
+                name: bgColor-link
+                label: BgColor link
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #d9f0fc'
+                name: bgColor-link-focus
+                label: BgColor link focus
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #f1f2f4'
+                name: bgColor-modal
+                label: BgColor modal
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: transparent'
+                name: borderColor-badge
+                label: BorderColor badge
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: transparent'
+                name: borderColor-badge-active
+                label: BorderColor badge active
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #e3e6e8'
+                name: borderColor-badge-disabled
+                label: BorderColor badge disabled
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: transparent'
+                name: borderColor-buttonDanger
+                label: BorderColor buttonDanger
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: currentColor'
+                name: borderColor-buttonDanger-active
+                label: BorderColor buttonDanger active
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: transparent'
+                name: borderColor-buttonDanger-disabled
+                label: BorderColor buttonDanger disabled
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: transparent'
+                name: borderColor-buttonDanger-error
+                label: BorderColor buttonDanger error
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: transparent'
+                name: borderColor-buttonDanger-focus
+                label: BorderColor buttonDanger focus
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: transparent'
+                name: borderColor-buttonDanger-hover
+                label: BorderColor buttonDanger hover
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: transparent'
+                name: borderColor-buttonDanger-success
+                label: BorderColor buttonDanger success
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: transparent'
+                name: borderColor-buttonPrimary
+                label: BorderColor buttonPrimary
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: currentColor'
+                name: borderColor-buttonPrimary-active
+                label: BorderColor buttonPrimary active
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: transparent'
+                name: borderColor-buttonPrimary-disabled
+                label: BorderColor buttonPrimary disabled
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: currentColor'
+                name: borderColor-buttonPrimary-error
+                label: BorderColor buttonPrimary error
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: transparent'
+                name: borderColor-buttonPrimary-focus
+                label: BorderColor buttonPrimary focus
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: transparent'
+                name: borderColor-buttonPrimary-hover
+                label: BorderColor buttonPrimary hover
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: currentColor'
+                name: borderColor-buttonPrimary-success
+                label: BorderColor buttonPrimary success
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: transparent'
+                name: borderColor-buttonSecondary
+                label: BorderColor buttonSecondary
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: currentColor'
+                name: borderColor-buttonSecondary-active
+                label: BorderColor buttonSecondary active
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: transparent'
+                name: borderColor-buttonSecondary-disabled
+                label: BorderColor buttonSecondary disabled
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: transparent'
+                name: borderColor-buttonSecondary-error
+                label: BorderColor buttonSecondary error
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: transparent'
+                name: borderColor-buttonSecondary-focus
+                label: BorderColor buttonSecondary focus
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: transparent'
+                name: borderColor-buttonSecondary-hover
+                label: BorderColor buttonSecondary hover
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: transparent'
+                name: borderColor-buttonSecondary-success
+                label: BorderColor buttonSecondary success
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #e3e6e8'
+                name: borderColor-default
+                label: BorderColor default
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #e3e6e8'
+                name: borderColor-input
+                label: BorderColor input
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #0aa7f5'
+                name: borderColor-input-checked
+                label: BorderColor input checked
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #e3e6e8'
+                name: borderColor-input-disabled
+                label: BorderColor input disabled
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #e85a4a'
+                name: borderColor-input-error
+                label: BorderColor input error
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #0aa7f5'
+                name: borderColor-input-focus
+                label: BorderColor input focus
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #0aa7f5'
+                name: borderColor-input-hover
+                label: BorderColor input hover
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: currentColor'
+                name: borderColor-link
+                label: BorderColor link
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: currentColor'
+                name: borderColor-link-active
+                label: BorderColor link active
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: currentColor'
+                name: borderColor-link-focus
+                label: BorderColor link focus
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: currentColor'
+                name: borderColor-link-hover
+                label: BorderColor link hover
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: currentColor'
+                name: borderColor-success
+                label: BorderColor success
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #8f99a3'
+                name: color-alt
+                label: Color alt
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #0d59f2'
+                name: color-badge
+                label: Color badge
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #0d59f2'
+                name: color-badge-active
+                label: Color badge active
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #2e3338'
+                name: color-badge-disabled
+                label: Color badge disabled
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #9e2215'
+                name: color-buttonDanger
+                label: Color buttonDanger
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #9e2215'
+                name: color-buttonDanger-active
+                label: Color buttonDanger active
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #8f99a3'
+                name: color-buttonDanger-disabled
+                label: Color buttonDanger disabled
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #e85a4a'
+                name: color-buttonDanger-error
+                label: Color buttonDanger error
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #9e2215'
+                name: color-buttonDanger-focus
+                label: Color buttonDanger focus
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #e85a4a'
+                name: color-buttonDanger-hover
+                label: Color buttonDanger hover
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #29c768'
+                name: color-buttonDanger-success
+                label: Color buttonDanger success
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #fff'
+                name: color-buttonPrimary
+                label: Color buttonPrimary
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #fff'
+                name: color-buttonPrimary-active
+                label: Color buttonPrimary active
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #e3e6e8'
+                name: color-buttonPrimary-disabled
+                label: Color buttonPrimary disabled
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #fff'
+                name: color-buttonPrimary-error
+                label: Color buttonPrimary error
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #fff'
+                name: color-buttonPrimary-focus
+                label: Color buttonPrimary focus
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #fff'
+                name: color-buttonPrimary-hover
+                label: Color buttonPrimary hover
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #fff'
+                name: color-buttonPrimary-success
+                label: Color buttonPrimary success
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #133986'
+                name: color-buttonSecondary
+                label: Color buttonSecondary
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #133986'
+                name: color-buttonSecondary-active
+                label: Color buttonSecondary active
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #8f99a3'
+                name: color-buttonSecondary-disabled
+                label: Color buttonSecondary disabled
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #e85a4a'
+                name: color-buttonSecondary-error
+                label: Color buttonSecondary error
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #133986'
+                name: color-buttonSecondary-focus
+                label: Color buttonSecondary focus
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #1a4db3'
+                name: color-buttonSecondary-hover
+                label: Color buttonSecondary hover
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #29c768'
+                name: color-buttonSecondary-success
+                label: Color buttonSecondary success
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #2e3338'
+                name: color-default
+                label: Color default
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #e85a4a'
+                name: color-error
+                label: Color error
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #2e3338'
+                name: color-input
+                label: Color input
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #fff'
+                name: color-input-checked
+                label: Color input checked
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #8f99a3'
+                name: color-input-disabled
+                label: Color input disabled
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #9e2215'
+                name: color-input-error
+                label: Color input error
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #2e3338'
+                name: color-input-focus
+                label: Color input focus
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #2e3338'
+                name: color-input-hover
+                label: Color input hover
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #8f99a3'
+                name: color-inputIcon
+                label: Color inputIcon
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #2e3338'
+                name: color-inputLabel
+                label: Color inputLabel
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #1a4db3'
+                name: color-link
+                label: Color link
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #1a4db3'
+                name: color-link-active
+                label: Color link active
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #1a4db3'
+                name: color-link-focus
+                label: Color link focus
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #0d59f2'
+                name: color-link-hover
+                label: Color link hover
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #29c768'
+                name: color-success
+                label: Color success
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+publish_mode: editorial_workflow
