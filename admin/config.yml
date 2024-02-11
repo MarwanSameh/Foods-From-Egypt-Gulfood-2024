@@ -1239,17 +1239,17 @@ collections:
       - hint: ''
         name: f_address
         label: Address
-        widget: string
+        widget: text
         required: false
       - hint: ''
         name: f_product-range
         label: Product Range
-        widget: string
+        widget: text
         required: false
       - hint: ''
         name: f_brief
         label: Brief
-        widget: string
+        widget: text
         required: false
       - hint: ''
         name: f_website-link
@@ -2525,6 +2525,10 @@ collections:
             label: Text
             name: 14c8af81
             widget: string
+          - hint: 'Original text: Button Text, key: -8fb26a5'
+            label: Text
+            name: '-8fb26a5'
+            widget: string
           - hint: 'Original text: Dairy, key: 3ebeeb3'
             label: Text
             name: 3ebeeb3
@@ -2950,6 +2954,19 @@ collections:
                 required: false
           - label: Image
             name: 611dd774
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 6d54157f
             widget: object
             fields:
               - name: url
