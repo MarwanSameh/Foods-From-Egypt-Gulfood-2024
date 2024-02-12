@@ -5,6 +5,7 @@ updated-on: 2024-02-12T11:01:29.320Z
 published-on: 2024-02-12T11:01:29.333Z
 f_image:
   url: /assets/images/fec19385-high-rs-2.png
+f_section-link: https://foodsfromegypt.org/exhibitors#herbs-spices
 tags: exhibitors-list
 layout: "[exhibitors-list].html"
 date: 2024-02-12T11:01:29.342Z
