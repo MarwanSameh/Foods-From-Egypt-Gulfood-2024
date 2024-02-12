@@ -5,6 +5,7 @@ updated-on: 2024-02-12T11:06:23.501Z
 published-on: 2024-02-12T11:06:23.516Z
 f_image:
   url: /assets/images/fec19385-high-rs-1.png
+f_section-link: https://foodsfromegypt.org/exhibitors/#tomato-paste
 tags: exhibitors-list
 layout: "[exhibitors-list].html"
 date: 2024-02-12T11:06:23.528Z
