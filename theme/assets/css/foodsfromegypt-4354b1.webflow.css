@@ -1746,6 +1746,7 @@ h3 {
   height: 170px;
   max-width: 292px;
   object-fit: cover;
+  border-radius: 20px;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -2329,7 +2330,7 @@ h3 {
   width: 100%;
   grid-column-gap: 0px;
   flex: 0 auto;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-start;
   display: flex;
 }

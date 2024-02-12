@@ -2283,22 +2283,6 @@ collections:
             label: Text
             name: '-2757d253'
             widget: string
-          - hint: 'Original text: The Food Export Council, key: -1fab0c38'
-            label: Text
-            name: '-1fab0c38'
-            widget: string
-          - hint: >-
-              Original text: An ambitious mission to create a new world full of,
-              key: 6ba00b7a
-            label: Text
-            name: 6ba00b7a
-            widget: string
-          - hint: >-
-              Original text:  Egyptian joy is a step closer to realization!,
-              key: -75d2b9b6
-            label: Text
-            name: '-75d2b9b6'
-            widget: string
           - hint: 'Original text: Exquisite Egyptian Foods, key: 14142337'
             label: Text
             name: '14142337'
@@ -2476,12 +2460,6 @@ collections:
               key: 2b333672
             label: Text
             name: 2b333672
-            widget: string
-          - hint: >-
-              Original text: By using this website you agree to FEC terms and
-              conditions., key: 4440ff6a
-            label: Text
-            name: 4440ff6a
             widget: string
           - hint: >-
               Original text: Powered by: Marwan Sameh Company® (LLC) 2023., key:
@@ -2729,10 +2707,6 @@ collections:
           - hint: 'Original link: https://thinkbig-gih.com/, key: -4d5cfeda'
             label: Link
             name: '-4d5cfeda'
-            widget: string
-          - hint: 'Original link: https://www.usaid.gov/, key: -94ef749'
-            label: Link
-            name: '-94ef749'
             widget: string
           - hint: 'Original link: http://www.eeca.gov.eg/, key: 419b5e86'
             label: Link
@@ -3057,19 +3031,6 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: '-693fb776'
-            widget: object
-            fields:
-              - name: url
-                label: Image Url
-                widget: image
-                allow_multiple: false
-                required: false
-              - name: alt
-                label: Image Alt
-                widget: string
-                required: false
-          - label: Image
             name: c8a503c
             widget: object
             fields:
@@ -3135,7 +3096,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: 637854b2
+            name: 636a3d31
             widget: object
             fields:
               - name: url
@@ -3148,7 +3109,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: 636a3d31
+            name: '-41eb72f0'
             widget: object
             fields:
               - name: url
@@ -3187,7 +3148,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: e2605a4
+            name: 304d6f34
             widget: object
             fields:
               - name: url
@@ -3200,7 +3161,20 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: a59e3aa
+            name: 7733a533
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 24c549a5
             widget: object
             fields:
               - name: url
@@ -3526,19 +3500,6 @@ collections:
                 required: false
           - label: Image
             name: 1a05075b
-            widget: object
-            fields:
-              - name: url
-                label: Image Url
-                widget: image
-                allow_multiple: false
-                required: false
-              - name: alt
-                label: Image Alt
-                widget: string
-                required: false
-          - label: Image
-            name: 51eaedc4
             widget: object
             fields:
               - name: url
