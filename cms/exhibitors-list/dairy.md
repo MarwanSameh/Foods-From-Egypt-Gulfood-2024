@@ -5,6 +5,7 @@ updated-on: 2024-02-12T10:14:04.717Z
 published-on: 2024-02-12T10:14:04.730Z
 f_image:
   url: /assets/images/fec19385-high-rs-4.png
+f_section-link: https://foodsfromegypt.org/exhibitors/#dairy
 tags: exhibitors-list
 layout: "[exhibitors-list].html"
 date: 2024-02-12T10:14:04.748Z
