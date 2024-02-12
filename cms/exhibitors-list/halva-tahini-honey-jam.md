@@ -5,6 +5,7 @@ updated-on: 2024-02-12T11:00:48.957Z
 published-on: 2024-02-12T11:00:48.969Z
 f_image:
   url: /assets/images/fec19385-high-rs-5.png
+f_section-link: https://foodsfromegypt.org/exhibitors#halva-tahini-honey-jam
 tags: exhibitors-list
 layout: "[exhibitors-list].html"
 date: 2024-02-12T11:00:48.981Z
