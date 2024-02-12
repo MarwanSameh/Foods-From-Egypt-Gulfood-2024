@@ -5,6 +5,7 @@ updated-on: 2024-02-12T11:07:31.983Z
 published-on: 2024-02-12T11:07:31.996Z
 f_image:
   url: /assets/images/fec19385-high-rs-15.png
+f_section-link: https://foodsfromegypt.org/exhibitors#pulses-and-grains
 tags: exhibitors-list
 layout: "[exhibitors-list].html"
 date: 2024-02-12T11:07:32.005Z
