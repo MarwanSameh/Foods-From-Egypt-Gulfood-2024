@@ -6,7 +6,7 @@ published-on: 2024-02-12T13:27:55.959Z
 f_hall: Sheikh Maktoum Hall
 f_stand: M-F39
 f_exhibitor-logo:
-  url: https://lh3.googleusercontent.com/drive-viewer/AEYmBYQke0YePClZWoYNy5NilhKu0nbe4b6g-DzT4bMWmDVdiLDCtO95Gnz1-Z5sgIYpUHKBseguMCn4Q0MJH2hmpKjBVGUr=s1600
+  url: /assets/images/soreal-me_na-logo-white-bg.webp
 f_poc-name: "Mr. Sameh Badrawy / Mr. Sherif Moustafa "
 f_poc-phone: "+201001026102"
 f_poc-email: info@soreal.com.eg
