@@ -3044,7 +3044,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: 633ff6ae
+            name: 634e0e2f
             widget: object
             fields:
               - name: url
@@ -3057,7 +3057,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: 634e0e2f
+            name: 633ff6ae
             widget: object
             fields:
               - name: url
