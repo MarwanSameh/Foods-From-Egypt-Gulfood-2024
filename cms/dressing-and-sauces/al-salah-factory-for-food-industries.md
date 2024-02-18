@@ -19,8 +19,8 @@ f_brief: "Al Salah Factory for Food Industries is one of the leading factories
   African, European Countries & USA. "
 f_website-link: http://www.alsalahfoods.com
 f_exhibitor-photo: https://drive.google.com/file/d/1DlTNhCOcQZ0qB9eRLjhD_67znVvNj_kE/view?usp=drive_link
-tags: tomato-paste
-layout: "[tomato-paste].html"
+tags: dressing-and-sauces
+layout: "[dressing-and-sauces].html"
 slug: al-salah-factory-for-food-industries
 date: 2024-02-11T10:44:27.482Z
 ---

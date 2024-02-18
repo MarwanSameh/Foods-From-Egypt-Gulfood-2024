@@ -17,8 +17,8 @@ f_brief: '"Manufacturing range of Juice Nectars in Glass bottles, Tetra pack,
   different sizes of cans and twist off caps."'
 f_website-link: http://www.best-egypt.com
 f_exhibitor-photo: https://drive.google.com/file/d/17gAExEOH3i6MwUjW-VsPwfDp9h6BgILz/view?usp=drive_link
-tags: juices-and-concentrates
-layout: "[juices-and-concentrates].html"
+tags: tomato-paste
+layout: "[tomato-paste].html"
 slug: best-egyptian-canning-company
 date: 2024-02-11T16:06:04.973Z
 ---

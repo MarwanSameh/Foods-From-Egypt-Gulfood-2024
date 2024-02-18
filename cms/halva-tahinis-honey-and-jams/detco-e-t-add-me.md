@@ -23,8 +23,8 @@ f_brief: "\"Food manufacturing company that was established in 2017 with a
   competition. \""
 f_website-link: http://www.add-me-eg.com
 f_exhibitor-photo: https://drive.google.com/file/d/1G8QfEOHpzfUiwuJjkmbPtsfHY8vJpUNV/view?usp=drive_link
-tags: tomato-paste
-layout: "[tomato-paste].html"
+tags: halva-tahinis-honey-and-jams
+layout: "[halva-tahinis-honey-and-jams].html"
 slug: detco-e-t-add-me
 date: 2024-02-11T23:51:15.024Z
 ---

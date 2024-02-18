@@ -24,8 +24,8 @@ slug: upper-egypt-for-concentrate-and-juices
 updated-on: '2024-02-05T14:52:55.103Z'
 created-on: '2024-02-05T14:52:55.103Z'
 published-on: '2024-02-06T16:45:51.806Z'
-layout: '[tomato-paste].html'
-tags: tomato-paste
+layout: '[dressing-and-sauces].html'
+tags: dressing-and-sauces
 ---
 
 

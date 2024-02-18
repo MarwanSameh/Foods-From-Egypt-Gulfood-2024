@@ -17,8 +17,8 @@ slug: siam-ocean-for-food-industries
 updated-on: '2024-02-10T18:12:44.697Z'
 created-on: '2024-02-10T18:12:44.697Z'
 published-on: '2024-02-11T07:41:39.963Z'
-layout: '[pulses-grains].html'
-tags: pulses-grains
+layout: '[juices-amd-concentrates].html'
+tags: juices-amd-concentrates
 ---
 
 

@@ -20,8 +20,8 @@ f_brief: '"Seven Sky For Food Industries Was Founded In 2012 We Are One Of The
   Our Customers And Have Emerged As One Of The Leading Producers In Egypt."'
 f_website-link: http://www.sevenskygroup.com
 f_exhibitor-photo: https://drive.google.com/file/d/16jgPkN8fw_ncQ8Ae03xGq684wkKtUb6q/view?usp=drive_link
-tags: tomato-paste
-layout: "[tomato-paste].html"
+tags: juices-and-concentrates
+layout: "[juices-and-concentrates].html"
 slug: seven-sky-for-food-industries-co
 date: 2024-02-12T13:11:49.920Z
 ---

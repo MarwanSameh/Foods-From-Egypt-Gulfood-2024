@@ -19,8 +19,8 @@ f_brief: '"Hero Nfi Is The Egyptian Subsidiary Of The Swiss Hero Group. Hero Nfi
   Honey, Liquid Concentrates, Infant Formula, Cereal And Jar."'
 f_website-link: http://www.heromea.com
 f_exhibitor-photo: https://drive.google.com/file/d/1cTvtKbYOqSYYrlDaH0yPE6F__7ch8Pa1/view?usp=drive_link
-tags: halva-tahinis-honey-and-jams
-layout: "[halva-tahinis-honey-and-jams].html"
+tags: juices-and-concentrates
+layout: "[juices-and-concentrates].html"
 slug: hero-nutritional-food-industries-s-a-e
 date: 2024-02-12T00:11:10.916Z
 ---

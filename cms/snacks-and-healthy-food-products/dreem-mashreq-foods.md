@@ -26,8 +26,8 @@ f_brief: >-
   Dreem Is ISO 22000, OHSAS 18001, FDA & Halal Certified.
 f_website-link: www.dreem.com.eg
 f_exhibitor-photo: https://drive.google.com/file/d/1sqjuh7S60jahowsPhBvs2X46xGu-KuBe/view?usp=drive_link
-tags: ingredients
-layout: "[ingredients].html"
+tags: snacks-and-healthy-food-products
+layout: "[snacks-and-healthy-food-products].html"
 slug: dreem-mashreq-foods
 date: 2024-02-11T23:52:49.079Z
 ---

@@ -28,8 +28,8 @@ f_brief: '"Solymar Food Is An Egyptian Company Established In 2020 And The Area
   Products Arrive In The Best Condition For Them."'
 f_website-link: http://www.solymarfood.com
 f_exhibitor-photo: https://drive.google.com/file/d/1Zp--B4MpBO1q408lnpyBj_0Nq2kGnwFk/view?usp=drive_link
-tags: juices-and-concentrates
-layout: "[juices-and-concentrates].html"
+tags: tomato-paste
+layout: "[tomato-paste].html"
 slug: solymar-food-for-import-and-export-and-foodstuff-trade
 date: 2024-02-12T13:15:14.071Z
 ---

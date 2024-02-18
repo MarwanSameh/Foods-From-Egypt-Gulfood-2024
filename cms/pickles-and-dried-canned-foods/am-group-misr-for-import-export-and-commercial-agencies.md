@@ -47,8 +47,8 @@ f_brief: "\"From its beginnings in 1995, AM Group Misr has established itself as
   international markets.\""
 f_website-link: http://www.amgroup-egypt.com
 f_exhibitor-photo: https://drive.google.com/file/d/1R9Vc8V9GG9j5QRL2eiu1racZ6GumTOKx/view?usp=drive_link
-tags: tomato-paste
-layout: "[tomato-paste].html"
+tags: pickles-and-dried-canned-foods
+layout: "[pickles-and-dried-canned-foods].html"
 slug: am-group-misr-for-import-export-and-commercial-agencies
 date: 2024-02-11T16:03:39.842Z
 ---

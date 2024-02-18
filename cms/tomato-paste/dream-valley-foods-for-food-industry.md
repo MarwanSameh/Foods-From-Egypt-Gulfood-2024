@@ -21,8 +21,8 @@ f_brief: Dream Valley started in 1997 until became one of the leading companies
   are committed to quality first in all aspects of our business practices.
 f_website-link: www.dreamvalleyfoods.com
 f_exhibitor-photo: https://drive.google.com/file/d/1g9egOlc9HhWGn1xYKLaFwW_16zGyhgbD/view?usp=drive_link
-tags: pickles-and-dried-canned-foods
-layout: "[pickles-and-dried-canned-foods].html"
+tags: tomato-paste
+layout: "[tomato-paste].html"
 slug: dream-valley-foods-for-food-industry
 date: 2024-02-11T23:52:18.685Z
 ---

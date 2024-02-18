@@ -25,8 +25,8 @@ slug: wadi-food-for-food-industries
 updated-on: '2024-02-05T14:53:49.352Z'
 created-on: '2024-02-05T14:53:49.352Z'
 published-on: '2024-02-06T16:45:51.806Z'
-layout: '[olives-olive-oils-and-edible-essential-oils].html'
-tags: olives-olive-oils-and-edible-essential-oils
+layout: '[tomato-paste].html'
+tags: tomato-paste
 ---
 
 

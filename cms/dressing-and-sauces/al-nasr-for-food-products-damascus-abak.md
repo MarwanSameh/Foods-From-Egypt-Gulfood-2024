@@ -24,8 +24,8 @@ f_exhibitor-logo:
   url: >-
     https://uploads-ssl.webflow.com/65be754b6bb1c09b8e6ab0fd/65c8c8d3b28fe27c7769637f_Al%20Nasr%20For%20Food%20Products%20%E2%80%9CDAMASCUS%20ABAK%E2%80%9D%20Logo%20.jpeg
   alt: null
-layout: '[herbs-and-spices].html'
-tags: herbs-and-spices
+layout: '[dressing-and-sauces].html'
+tags: dressing-and-sauces
 ---
 
 

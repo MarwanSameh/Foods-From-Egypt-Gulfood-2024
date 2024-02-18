@@ -20,8 +20,8 @@ f_brief: '"Al Nada for Food Industries is an individual company established by
   enrich our consumers’ lives every day."'
 f_website-link: https://alnadafoods-eg.com/detail_ms.php?d=1
 f_exhibitor-photo: https://drive.google.com/file/d/1NbSAd7ETThKOzFA6HXFn7oI4surEe6Id/view?usp=drive_link
-tags: halva-tahinis-honey-and-jams
-layout: "[halva-tahinis-honey-and-jams].html"
+tags: tomato-paste
+layout: "[tomato-paste].html"
 slug: al-nada-for-food-industries
 date: 2024-02-13T16:08:55.922Z
 ---

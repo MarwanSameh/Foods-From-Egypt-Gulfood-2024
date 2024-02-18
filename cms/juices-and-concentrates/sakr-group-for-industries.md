@@ -23,8 +23,8 @@ f_brief: |-
   Fruit Concentrate.
 f_website-link: www.sakrgroup.net
 f_exhibitor-photo: https://drive.google.com/file/d/1lqCuLeB_P0kkprGBsKbFVGmzLvRPdfM7/view?usp=drive_link
-tags: dairies
-layout: "[dairies].html"
+tags: juices-and-concentrates
+layout: "[juices-and-concentrates].html"
 slug: sakr-group-for-industries
 date: 2024-02-12T13:08:07.543Z
 ---

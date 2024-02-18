@@ -30,8 +30,8 @@ f_brief: '"Beyti is one of the largest producers of milk, juice and yogurt in
   in Africa- EU- N.America – Asia."'
 f_website-link: http://www.beytiegypt.com
 f_exhibitor-photo: https://drive.google.com/file/d/18FlBAwQ5fEOZnX4hpPj6D6Ss86ufr6jD/view?usp=drive_link
-tags: juices-and-concentrates
-layout: "[juices-and-concentrates].html"
+tags: dairies
+layout: "[dairies].html"
 slug: international-co-for-agro-industrial-projects-beyti
 date: 2024-02-12T11:34:11.325Z
 ---

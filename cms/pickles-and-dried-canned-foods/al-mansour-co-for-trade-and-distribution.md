@@ -30,8 +30,8 @@ f_brief: >-
   Retail Sector: Fresh Food Markets, Metro Markets, & Kheir Zaman.
 f_website-link: www.mansour-int.com
 f_exhibitor-photo: https://drive.google.com/file/d/1fsg2NGy693E-y7MO9QY5pQxwNYFBMOsg/view?usp=drive_link
-tags: dairies
-layout: "[dairies].html"
+tags: pickles-and-dried-canned-foods
+layout: "[pickles-and-dried-canned-foods].html"
 slug: al-mansour-co-for-trade-and-distribution
 date: 2024-02-11T10:43:09.160Z
 ---

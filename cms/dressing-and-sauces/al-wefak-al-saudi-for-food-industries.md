@@ -30,8 +30,8 @@ f_brief: >-
   Also, we export our production in bulk and have the availability to make private-label products for our customers.
 f_website-link: www.alwefakalsaudi.com
 f_exhibitor-photo: https://drive.google.com/file/d/1-63oggs6BFJbDiumlrWp3zyxRTFmOJJg/view?usp=drive_link
-tags: ingredients
-layout: "[ingredients].html"
+tags: dressing-and-sauces
+layout: "[dressing-and-sauces].html"
 slug: al-wefak-al-saudi-for-food-industries
 date: 2024-02-11T15:53:24.837Z
 ---

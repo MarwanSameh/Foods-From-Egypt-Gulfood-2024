@@ -23,8 +23,8 @@ f_brief: El-Sabah Food Industries Owns A Complex Of Factories By International
   To Gain The Satisfaction And Confidence Of Consumers Locally And Globally.
 f_website-link: www.elsabah.net
 f_exhibitor-photo: https://drive.google.com/file/d/1z0OIsbLWGU9gCGfpanVhzSniy-KYQWdh/view?usp=drive_link
-tags: dairies
-layout: "[dairies].html"
+tags: juices-and-concentrates
+layout: "[juices-and-concentrates].html"
 slug: elsabah-for-food-industries
 date: 2024-02-12T00:01:00.935Z
 ---

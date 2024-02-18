@@ -30,8 +30,8 @@ f_brief: Almonairy Is A Group Of Joint-Stock Companies Working In Different Food
   Rich Wings (General Trading Company) And Gold Pick (Bakeries And More)).
 f_website-link: https://alamalegypt.com/
 f_exhibitor-photo: https://drive.google.com/file/d/11cgGIiSSBF_Vl9wfxajmf9aWoil8BwiP/view?usp=drive_link
-tags: pulses-grains
-layout: "[pulses-grains].html"
+tags: herbs-and-spices
+layout: "[herbs-and-spices].html"
 slug: al-amal-for-food-industries-export
 date: 2024-02-11T10:38:19.196Z
 ---

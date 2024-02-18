@@ -22,8 +22,8 @@ f_brief: >-
   Al Amal has exported the best quality crops to all over the world...
 f_website-link: www.alamal.com
 f_exhibitor-photo: https://drive.google.com/file/d/15WBCqhuR2rEjZRXQ2WcHz0yEaAULWdlo/view?usp=drive_link
-tags: pulses-grains
-layout: "[pulses-grains].html"
+tags: dates
+layout: "[dates].html"
 slug: al-amal-for-agricultural-crops
 date: 2024-02-11T10:37:38.254Z
 ---

@@ -21,8 +21,8 @@ f_brief: ALDOHA for food industries is one of the leading companies in the field
   any dried foods ever.
 f_website-link: www.eldoha.com
 f_exhibitor-photo: https://drive.google.com/file/d/1iIF-iZV9uLfz4d4IzRTTyzoxiJeyviZR/view?usp=drive_link
-tags: pasta-wheat-derivatives
-layout: "[pasta-wheat-derivatives].html"
+tags: pulses-grains
+layout: "[pulses-grains].html"
 slug: aldoha-for-food-industries-aldoha-foods
 date: 2024-02-11T15:55:06.519Z
 ---

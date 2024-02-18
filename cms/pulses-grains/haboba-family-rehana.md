@@ -31,8 +31,8 @@ f_exhibitor-logo:
   url: >-
     https://uploads-ssl.webflow.com/65be754b6bb1c09b8e6ab0fd/65c8c91e00010f798a61a1a9_Haboba%20Family%20(REHANA)%20-Logo.jpeg
   alt: null
-layout: '[herbs-and-spices].html'
-tags: herbs-and-spices
+layout: '[pulses-and-grains].html'
+tags: pulses-and-grains
 ---
 
 

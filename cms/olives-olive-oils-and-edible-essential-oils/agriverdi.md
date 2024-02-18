@@ -20,8 +20,8 @@ f_brief: AgriVerdi was established in 2019 to cater sesame added value products
   with added value products to feed their growth.
 f_website-link: www.agriverdi.com
 f_exhibitor-photo: https://drive.google.com/file/d/1iDDf1HxBWY4tHA0RFuQJ9y8mq_8CFVyl/view?usp=drive_link
-tags: pulses-grains
-layout: "[pulses-grains].html"
+tags: olives-olive-oils-and-edible-essential-oils
+layout: "[olives-olive-oils-and-edible-essential-oils].html"
 slug: agriverdi
 date: 2024-02-11T10:35:02.655Z
 ---

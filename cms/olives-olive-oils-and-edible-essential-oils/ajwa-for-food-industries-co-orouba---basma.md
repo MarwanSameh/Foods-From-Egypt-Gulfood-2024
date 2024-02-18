@@ -24,8 +24,8 @@ f_brief: Ajwa For Food Industries Co. –Egypt (Migop) As One Of The Major
   Cauliflower , Vine Leaves , Colcasia , Strawberry , Pomegranate , Falafel …Etc
 f_website-link: www.mbiinternational.com
 f_exhibitor-photo: https://drive.google.com/file/d/1kqBXXgyVTUg1Cdzwz7gWQB5eAj84XRMQ/view?usp=drive_link
-tags: frozen-fruits-and-vegetables
-layout: "[frozen-fruits-and-vegetables].html"
+tags: olives-olive-oils-and-edible-essential-oils
+layout: "[olives-olive-oils-and-edible-essential-oils].html"
 slug: ajwa-for-food-industries-co-orouba---basma
 date: 2024-02-11T10:36:37.276Z
 ---

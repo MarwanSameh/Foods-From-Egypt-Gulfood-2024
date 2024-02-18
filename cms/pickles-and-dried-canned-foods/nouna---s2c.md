@@ -19,8 +19,8 @@ f_brief: "Supplier To Consumer Has Been Established On A History Of Quality
   Label Business For The Local And Export Markets."
 f_website-link: http://www.s2cfood.com
 f_exhibitor-photo: https://drive.google.com/file/d/1X2rPK2wrIgVsHy_TZBgSi2iUE7Ol_IW2/view?usp=drive_link
-tags: halva-tahinis-honey-and-jams
-layout: "[halva-tahinis-honey-and-jams].html"
+tags: pickles-and-dried-canned-foods
+layout: "[pickles-and-dried-canned-foods].html"
 slug: nouna---s2c
 date: 2024-02-12T11:59:31.125Z
 ---

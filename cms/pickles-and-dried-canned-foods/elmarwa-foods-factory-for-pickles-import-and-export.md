@@ -23,8 +23,8 @@ f_brief: '"The company was established in 2007 The company works in the field of
   9001/2015."'
 f_website-link: http://www.elmarwafood.com
 f_exhibitor-photo: https://drive.google.com/file/d/1NRGPi-QRFDDgkPTTOkcuARc4MXFt3EPE/view?usp=drive_link
-tags: olives-olive-oils-and-edible-essential-oils
-layout: "[olives-olive-oils-and-edible-essential-oils].html"
+tags: pickles-and-dried-canned-foods
+layout: "[pickles-and-dried-canned-foods].html"
 slug: elmarwa-foods-factory-for-pickles-import-and-export
 date: 2024-02-13T16:11:18.067Z
 ---

@@ -21,8 +21,8 @@ f_brief: >-
   Our product range varies from Fava beans, Canned Foods, Tomato paste, Halva, Tahini and spreads with highest global safety standards production.
 f_website-link: https://www.harvestfoods.com.eg
 f_exhibitor-photo: https://drive.google.com/file/d/1NShCJIZIgwqHgsYomBmdP_88xAPaLJvQ/view?usp=drive_link
-tags: pickles-and-dried-canned-foods
-layout: "[pickles-and-dried-canned-foods].html"
+tags: halva-tahinis-honey-and-jams
+layout: "[halva-tahinis-honey-and-jams].html"
 slug: harvest-foods
 date: 2024-02-12T00:10:28.188Z
 ---
