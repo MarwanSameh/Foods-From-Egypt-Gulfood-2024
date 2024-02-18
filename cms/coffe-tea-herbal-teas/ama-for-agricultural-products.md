@@ -24,8 +24,8 @@ slug: ama-for-agricultural-products
 updated-on: '2024-02-10T18:12:43.322Z'
 created-on: '2024-02-10T18:12:43.322Z'
 published-on: '2024-02-11T07:41:39.963Z'
-layout: '[coffee-tea-herbal-teas].html'
-tags: coffee-tea-herbal-teas
+layout: '[coffe-tea-herbal-teas].html'
+tags: coffe-tea-herbal-teas
 ---
 
 
