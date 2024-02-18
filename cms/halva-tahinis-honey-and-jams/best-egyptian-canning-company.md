@@ -17,8 +17,8 @@ f_brief: '"Manufacturing range of Juice Nectars in Glass bottles, Tetra pack,
   different sizes of cans and twist off caps."'
 f_website-link: http://www.best-egypt.com
 f_exhibitor-photo: https://drive.google.com/file/d/17gAExEOH3i6MwUjW-VsPwfDp9h6BgILz/view?usp=drive_link
-tags: halva-tahinis-honey-amd-jams
-layout: "[halva-tahinis-honey-amd-jams].html"
+tags: halva-tahinis-honey-and-jams
+layout: "[halva-tahinis-honey-and-jams].html"
 slug: best-egyptian-canning-company
 date: 2024-02-11T16:06:04.973Z
 ---
