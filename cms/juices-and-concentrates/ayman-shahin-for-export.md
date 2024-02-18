@@ -22,8 +22,8 @@ f_brief: Ayman Shahin for Export started its activity 3 years ago. We exported
   Tahya is a brand of beans- legumes.
 f_website-link: https://www.as-export.com/
 f_exhibitor-photo: https://drive.google.com/file/d/1pCU9-DgH7dbtOZZbZJPJG2YgBATFdWpp/view?usp=drive_link
-tags: snacks-and-healthy-food-products
-layout: "[snacks-and-healthy-food-products].html"
+tags: juices-and-concentrates
+layout: "[juices-and-concentrates].html"
 date: 2024-02-16T12:44:27.694Z
 seo:
   noindex: false

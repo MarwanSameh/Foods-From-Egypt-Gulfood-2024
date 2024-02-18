@@ -31,8 +31,8 @@ f_brief: >-
   Expo East aims to lead through this production concept, capitalizing on the breadth of business and management experience.
 f_website-link: www.expoeast.me
 f_exhibitor-photo: https://drive.google.com/file/d/1OwBnj7qYekwLTSM7YMCLoEAs-26ZWU9x/view?usp=drive_link
-tags: dairies
-layout: "[dairies].html"
+tags: tomato-paste
+layout: "[tomato-paste].html"
 slug: expo-east-for-manufacturing-global-trade-co
 date: 2024-02-12T00:04:01.058Z
 ---
